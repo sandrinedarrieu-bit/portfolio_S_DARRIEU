@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sandrine — Product Builder No-Code & IA</title>
+<meta name="description" content="Portfolio de Sandrine — Product Builder No-Code & IA, Consultante en transformation digitale pour TPE et associations.">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ink: #111118;
+  --ink-muted: #6b6b7a;
+  --ink-light: #a0a0b0;
+  --bg: #fafaf8;
+  --bg-card: #ffffff;
+  --border: rgba(0,0,0,0.08);
+  --blue: #185FA5;
+  --blue-light: #E6F1FB;
+  --blue-dark: #0C447C;
+  --purple: #534AB7;
+  --purple-light: #EEEDFE;
+  --green: #3B6D11;
+  --green-light: #EAF3DE;
+  --amber: #854F0B;
+  --amber-light: #FAEEDA;
+  --radius: 14px;
+  --radius-sm: 8px;
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+}
+.wrap { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+/* NAV */
+nav {
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.nav-name { font-size: 15px; font-weight: 600; color: var(--ink); }
+.nav-contact {
+  font-size: 13px; color: var(--blue);
+  text-decoration: none; font-weight: 500;
+  border: 0.5px solid var(--blue);
+  border-radius: 20px; padding: 5px 14px;
+}
+.nav-contact:hover { background: var(--blue-light); }
+
+/* HERO */
+.hero {
+  padding: 4rem 24px 3rem;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--blue-light); color: var(--blue-dark);
+  border-radius: 20px; padding: 5px 14px;
+  font-size: 12px; font-weight: 500; margin-bottom: 1.5rem;
+}
+.hero h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  font-weight: 700; line-height: 1.15;
+  letter-spacing: -0.5px;
+  margin-bottom: 1rem;
+  color: var(--ink);
+}
+.hero h1 span { color: var(--blue); }
+.hero-sub {
+  font-size: 16px; color: var(--ink-muted);
+  max-width: 520px; line-height: 1.7;
+  margin-bottom: 2rem;
+}
+.hero-stack {
+  display: flex; flex-wrap: wrap; gap: 6px;
+}
+.stack-pill {
+  background: var(--bg-card);
+  border: 0.5px solid var(--border);
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 12px;
+  color: var(--ink-muted);
+  font-weight: 500;
+}
+
+/* DIVIDER */
+.divider { height: 0.5px; background: var(--border); margin: 0 24px; }
+
+/* SECTION */
+.section { padding: 2.5rem 24px; max-width: 720px; margin: 0 auto; }
+.section-label {
+  font-size: 11px; font-weight: 600; color: var(--blue);
+  text-transform: uppercase; letter-spacing: 1.2px;
+  margin-bottom: 1.5rem;
+}
+
+/* PROJECT CARDS */
+.project-card {
+  background: var(--bg-card);
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 16px;
+  transition: box-shadow 0.2s;
+}
+.project-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+.project-header {
+  padding: 20px 22px 16px;
+  border-bottom: 0.5px solid var(--border);
+  display: flex; align-items: flex-start; gap: 14px;
+}
+.project-icon {
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; flex-shrink: 0;
+}
+.project-icon.blue { background: var(--blue-light); }
+.project-icon.purple { background: var(--purple-light); }
+.project-meta { flex: 1; }
+.project-name { font-size: 16px; font-weight: 600; color: var(--ink); margin-bottom: 3px; }
+.project-type { font-size: 12px; color: var(--ink-muted); }
+.project-status {
+  font-size: 11px; font-weight: 500;
+  padding: 3px 10px; border-radius: 20px;
+  flex-shrink: 0; align-self: flex-start;
+}
+.status-live { background: var(--green-light); color: var(--green); }
+.status-dev { background: var(--amber-light); color: var(--amber); }
+.project-body { padding: 18px 22px; }
+.project-desc {
+  font-size: 14px; color: var(--ink-muted);
+  line-height: 1.7; margin-bottom: 14px;
+}
+.project-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 16px; }
+.tag {
+  font-size: 11px; font-weight: 500;
+  padding: 3px 9px; border-radius: 6px;
+  background: var(--bg); border: 0.5px solid var(--border);
+  color: var(--ink-muted);
+}
+.project-links { display: flex; gap: 8px; flex-wrap: wrap; }
+.link-btn {
+  font-size: 13px; font-weight: 500;
+  padding: 7px 16px; border-radius: 20px;
+  text-decoration: none; transition: all 0.15s;
+  display: inline-flex; align-items: center; gap: 5px;
+}
+.link-primary { background: var(--blue); color: #fff; }
+.link-primary:hover { background: var(--blue-dark); }
+.link-secondary {
+  background: transparent; color: var(--ink-muted);
+  border: 0.5px solid var(--border);
+}
+.link-secondary:hover { border-color: var(--ink-muted); color: var(--ink); }
+
+/* COMPÉTENCES */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+}
+.skill-group {
+  background: var(--bg-card);
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+}
+.skill-group-label {
+  font-size: 11px; font-weight: 600;
+  color: var(--ink-muted); text-transform: uppercase;
+  letter-spacing: 0.8px; margin-bottom: 8px;
+}
+.skill-list { font-size: 13px; color: var(--ink); line-height: 1.8; }
+
+/* APROPOS */
+.about-card {
+  background: var(--blue-light);
+  border-radius: var(--radius);
+  padding: 24px 26px;
+}
+.about-card p {
+  font-size: 14px; color: var(--blue-dark);
+  line-height: 1.8;
+}
+.about-card strong { font-weight: 600; }
+
+/* CONTACT */
+.contact-strip {
+  display: flex; align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap; gap: 12px;
+  background: var(--ink);
+  border-radius: var(--radius);
+  padding: 22px 26px;
+}
+.contact-strip-text { color: #fff; }
+.contact-strip-title { font-size: 16px; font-weight: 600; margin-bottom: 3px; }
+.contact-strip-sub { font-size: 13px; color: rgba(255,255,255,0.6); }
+.contact-btn {
+  background: #fff; color: var(--ink);
+  font-size: 13px; font-weight: 600;
+  padding: 10px 20px; border-radius: 20px;
+  text-decoration: none; flex-shrink: 0;
+}
+.contact-btn:hover { background: var(--blue-light); color: var(--blue); }
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 2rem 24px;
+  font-size: 12px;
+  color: var(--ink-light);
+}
+
+@media (max-width: 480px) {
+  .hero h1 { font-size: 26px; }
+  .project-header { flex-wrap: wrap; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-name">Sandrine</div>
+  <a href="mailto:contact@voxoffice.io" class="nav-contact">Me contacter</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-tag">🛠️ Product Builder No-Code & IA</div>
+  <h1>Je transforme des idées<br>en <span>outils qui fonctionnent.</span></h1>
+  <p class="hero-sub">Consultante en transformation digitale pour TPE et associations — je conçois des applications no-code et des automatisations IA adaptées aux besoins réels du terrain.</p>
+  <div class="hero-stack">
+    <span class="stack-pill">Lovable</span>
+    <span class="stack-pill">Bubble</span>
+    <span class="stack-pill">Make</span>
+    <span class="stack-pill">Airtable</span>
+    <span class="stack-pill">Supabase</span>
+    <span class="stack-pill">Claude API</span>
+    <span class="stack-pill">Tally</span>
+    <span class="stack-pill">Notion</span>
+    <span class="stack-pill">Figma</span>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-label">Projets</div>
+
+  <!-- VOXOFFICE -->
+  <div class="project-card">
+    <div class="project-header">
+      <div class="project-icon blue">🎙️</div>
+      <div class="project-meta">
+        <div class="project-name">VoxOffice</div>
+        <div class="project-type">Application SaaS · Assistant vocal professionnel</div>
+      </div>
+      <div class="project-status status-live">En ligne</div>
+    </div>
+    <div class="project-body">
+      <p class="project-desc">Espace de travail vocal pour TPE et professionnels — dictez vos notes, fiches clients, comptes-rendus et documents. L'IA transcrit, classe et génère automatiquement. Prototype personnalisé généré en 2 minutes depuis un questionnaire adaptatif.</p>
+      <div class="project-tags">
+        <span class="tag">Lovable</span>
+        <span class="tag">Claude API</span>
+        <span class="tag">Supabase</span>
+        <span class="tag">Make</span>
+        <span class="tag">Tally</span>
+        <span class="tag">Vercel</span>
+        <span class="tag">Web3Forms</span>
+      </div>
+      <div class="project-links">
+        <a href="https://voxoffice.io" target="_blank" class="link-btn link-primary">🌐 Voir le site</a>
+        <a href="https://voxoffice-insight-guide.lovable.app" target="_blank" class="link-btn link-secondary">🎙️ Prototype personnalisé</a>
+        <a href="https://vox-office-voice-hub.lovable.app" target="_blank" class="link-btn link-secondary">📱 Démo avocat</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEXAI -->
+  <div class="project-card">
+    <div class="project-header">
+      <div class="project-icon purple">⚖️</div>
+      <div class="project-meta">
+        <div class="project-name">LexAI</div>
+        <div class="project-type">Application Web · Legal tech · Gestion de délais juridiques</div>
+      </div>
+      <div class="project-status status-dev">En développement</div>
+    </div>
+    <div class="project-body">
+      <p class="project-desc">Application de gestion de délais procéduraux pour avocats et juristes — calcul automatique des échéances, badges d'urgence, gestion des dossiers clients et interface de suivi. Frontend HTML/JS connecté à Supabase et Claude API.</p>
+      <div class="project-tags">
+        <span class="tag">HTML/JS</span>
+        <span class="tag">Supabase</span>
+        <span class="tag">Claude API</span>
+        <span class="tag">GitHub</span>
+        <span class="tag">Vercel</span>
+      </div>
+      <div class="project-links">
+        <a href="https://lexai8.vercel.app" target="_blank" class="link-btn link-primary">🌐 Voir l'app</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-label">Compétences</div>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <div class="skill-group-label">No-Code</div>
+      <div class="skill-list">Lovable · Bubble<br>Airtable · Notion<br>Tally · Figma</div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-label">Automatisation</div>
+      <div class="skill-list">Make · Web3Forms<br>Webhooks · API REST<br>Google Sheets</div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-label">IA & Données</div>
+      <div class="skill-list">Claude API · Supabase<br>Prompting · RAG<br>Analyse de besoins</div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-label">Méthodologie</div>
+      <div class="skill-list">Méthode CAPE<br>Diagnostic IA<br>Conduite du changement</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-label">À propos</div>
+  <div class="about-card">
+    <p>Avec <strong>30 ans d'expérience</strong> en coordination administrative et gestion de structures (EHPAD, espaces de travail, environnements associatifs et conventuels), j'ai fait le pivot vers le <strong>no-code et l'IA</strong> pour mettre la technologie au service des organisations qui en ont le plus besoin.<br><br>Je finalise actuellement une <strong>certification Product Builder RNCP niveau 6</strong> (École Cube, juillet 2026) et j'accompagne TPE, artisans et associations dans leur transformation digitale via ma méthodologie propriétaire <strong>CAPE</strong> — Connaissance, Adoption, Processus, Engagement.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="contact-strip">
+    <div class="contact-strip-text">
+      <div class="contact-strip-title">Un projet à construire ?</div>
+      <div class="contact-strip-sub">Je suis disponible pour des missions en no-code, IA et transformation digitale.</div>
+    </div>
+    <a href="mailto:contact@voxoffice.io" class="contact-btn">Écrire →</a>
+  </div>
+</div>
+
+<footer>
+  Sandrine · Product Builder No-Code & IA · Normandie · 2026
+</footer>
+
+</body>
+</html>
