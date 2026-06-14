@@ -44,6 +44,7 @@ nav {
   margin: 0 auto;
 }
 .nav-name { font-size: 15px; font-weight: 600; color: var(--ink); }
+.nav-links { display: flex; align-items: center; gap: 8px; }
 .nav-contact {
   font-size: 13px; color: var(--blue);
   text-decoration: none; font-weight: 500;
@@ -51,6 +52,13 @@ nav {
   border-radius: 20px; padding: 5px 14px;
 }
 .nav-contact:hover { background: var(--blue-light); }
+.nav-cv {
+  font-size: 13px; color: #fff;
+  text-decoration: none; font-weight: 500;
+  background: var(--ink);
+  border-radius: 20px; padding: 5px 14px;
+}
+.nav-cv:hover { background: var(--blue-dark); }
 
 /* HERO */
 .hero {
@@ -124,6 +132,7 @@ nav {
 }
 .project-icon.blue { background: var(--blue-light); }
 .project-icon.purple { background: var(--purple-light); }
+.project-icon.green { background: var(--green-light); }
 .project-meta { flex: 1; }
 .project-name { font-size: 16px; font-weight: 600; color: var(--ink); margin-bottom: 3px; }
 .project-type { font-size: 12px; color: var(--ink-muted); }
@@ -212,6 +221,57 @@ nav {
 }
 .contact-btn:hover { background: var(--blue-light); color: var(--blue); }
 
+/* CONTACT FORM */
+.contact-form-card {
+  background: var(--bg-card);
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 26px;
+  margin-bottom: 16px;
+}
+.form-row { margin-bottom: 14px; }
+.form-row label {
+  display: block;
+  font-size: 12px; font-weight: 600;
+  color: var(--ink-muted);
+  text-transform: uppercase; letter-spacing: 0.6px;
+  margin-bottom: 6px;
+}
+.form-row input,
+.form-row textarea {
+  width: 100%;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  resize: vertical;
+}
+.form-row input:focus,
+.form-row textarea:focus {
+  outline: 2px solid var(--blue);
+  outline-offset: 1px;
+  border-color: var(--blue);
+}
+.form-submit {
+  background: var(--blue); color: #fff;
+  font-size: 14px; font-weight: 600;
+  padding: 12px 24px; border-radius: 20px;
+  border: none; cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s;
+}
+.form-submit:hover { background: var(--blue-dark); }
+.form-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+.form-status {
+  font-size: 13px; margin-top: 12px;
+  font-weight: 500;
+}
+.form-status.success { color: var(--green); }
+.form-status.error { color: #b42318; }
+
 /* FOOTER */
 footer {
   text-align: center;
@@ -230,7 +290,10 @@ footer {
 
 <nav>
   <div class="nav-name">Sandrine</div>
-  <a href="mailto:contact@voxoffice.io" class="nav-contact">Me contacter</a>
+  <div class="nav-links">
+    <a href="cv-sandrine-darrieu.pdf" target="_blank" class="nav-cv">📄 CV</a>
+    <a href="#contact" class="nav-contact">Me contacter</a>
+  </div>
 </nav>
 
 <div class="hero">
@@ -309,6 +372,32 @@ footer {
     </div>
   </div>
 
+  <!-- METHODE CAPE -->
+  <div class="project-card">
+    <div class="project-header">
+      <div class="project-icon green">📊</div>
+      <div class="project-meta">
+        <div class="project-name">Méthode CAPE</div>
+        <div class="project-type">Diagnostic IA · Connaissance, Adoption, Processus, Engagement</div>
+      </div>
+      <div class="project-status status-live">En ligne</div>
+    </div>
+    <div class="project-body">
+      <p class="project-desc">Méthodologie propriétaire de diagnostic de maturité IA pour TPE, artisans et associations. Un questionnaire évalue 4 dimensions et génère automatiquement un profil, un niveau de maturité et des recommandations — pipeline complet de scoring, rapport et relance automatisés.</p>
+      <div class="project-tags">
+        <span class="tag">Tally</span>
+        <span class="tag">Make</span>
+        <span class="tag">Google Docs</span>
+        <span class="tag">Airtable</span>
+        <span class="tag">Gmail</span>
+      </div>
+      <div class="project-links">
+        <a href="https://cape-diagnostic.vercel.app" target="_blank" class="link-btn link-primary">📊 Faire le diagnostic</a>
+        <a href="https://tally.so/r/68PxQB" target="_blank" class="link-btn link-secondary">📝 Formulaire complet</a>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <div class="divider"></div>
@@ -346,15 +435,82 @@ footer {
 
 <div class="divider"></div>
 
-<div class="section">
+<div class="section" id="contact">
+  <div class="section-label">Contact</div>
+
+  <div class="contact-form-card">
+    <form id="contact-form">
+      <input type="hidden" name="access_key" value="VOTRE_CLE_WEB3FORMS_ICI">
+      <input type="hidden" name="subject" value="Nouveau message depuis le portfolio">
+      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+
+      <div class="form-row">
+        <label for="name">Nom</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-row">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-row">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+      </div>
+      <button type="submit" class="form-submit" id="form-submit-btn">Envoyer le message</button>
+      <div class="form-status" id="form-status"></div>
+    </form>
+  </div>
+
   <div class="contact-strip">
     <div class="contact-strip-text">
       <div class="contact-strip-title">Un projet à construire ?</div>
       <div class="contact-strip-sub">Je suis disponible pour des missions en no-code, IA et transformation digitale.</div>
     </div>
-    <a href="mailto:contact@voxoffice.io" class="contact-btn">Écrire →</a>
+    <a href="mailto:sandrine.darrieu@free.fr" class="contact-btn">Écrire par email →</a>
   </div>
 </div>
+
+<script>
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const form = e.target;
+  const btn = document.getElementById('form-submit-btn');
+  const status = document.getElementById('form-status');
+
+  btn.disabled = true;
+  btn.textContent = 'Envoi en cours...';
+  status.textContent = '';
+  status.className = 'form-status';
+
+  const formData = new FormData(form);
+  const data = Object.fromEntries(formData.entries());
+
+  fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify(data)
+  })
+  .then(res => res.json())
+  .then(result => {
+    if (result.success) {
+      status.textContent = '✓ Message envoyé, merci ! Je vous répondrai rapidement.';
+      status.classList.add('success');
+      form.reset();
+    } else {
+      status.textContent = 'Une erreur est survenue. Réessayez ou écrivez directement par email.';
+      status.classList.add('error');
+    }
+  })
+  .catch(() => {
+    status.textContent = 'Une erreur est survenue. Réessayez ou écrivez directement par email.';
+    status.classList.add('error');
+  })
+  .finally(() => {
+    btn.disabled = false;
+    btn.textContent = 'Envoyer le message';
+  });
+});
+</script>
 
 <footer>
   Sandrine · Product Builder No-Code & IA · Normandie · 2026
