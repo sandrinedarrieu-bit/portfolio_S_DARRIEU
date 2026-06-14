@@ -440,7 +440,7 @@ footer {
 
   <div class="contact-form-card">
     <form id="contact-form">
-      <input type="hidden" name="access_key" value="VOTRE_CLE_WEB3FORMS_ICI">
+      <input type="hidden" name="access_key" value="3dfbf109-a680-48c6-9fc4-fc73fda8b70a">
       <input type="hidden" name="subject" value="Nouveau message depuis le portfolio">
       <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
 
@@ -483,12 +483,11 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
   status.className = 'form-status';
 
   const formData = new FormData(form);
-  const data = Object.fromEntries(formData.entries());
 
   fetch('https://api.web3forms.com/submit', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-    body: JSON.stringify(data)
+    headers: { 'Accept': 'application/json' },
+    body: formData
   })
   .then(res => res.json())
   .then(result => {
@@ -497,7 +496,7 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
       status.classList.add('success');
       form.reset();
     } else {
-      status.textContent = 'Une erreur est survenue. Réessayez ou écrivez directement par email.';
+      status.textContent = 'Une erreur est survenue : ' + (result.message || 'réessayez ou écrivez directement par email.');
       status.classList.add('error');
     }
   })
