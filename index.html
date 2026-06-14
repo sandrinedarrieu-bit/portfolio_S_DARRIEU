@@ -144,6 +144,10 @@ nav {
 }
 .status-live { background: var(--green-light); color: var(--green); }
 .status-dev { background: var(--amber-light); color: var(--amber); }
+.status-group {
+  display: flex; flex-direction: column; gap: 4px;
+  flex-shrink: 0; align-self: flex-start;
+}
 .project-body { padding: 18px 22px; }
 .project-desc {
   font-size: 14px; color: var(--ink-muted);
@@ -407,7 +411,10 @@ footer {
         <div class="project-name">PostMin</div>
         <div class="project-type">Application Web · Génération de contenu réseaux sociaux par IA</div>
       </div>
-      <div class="project-status status-live">En ligne</div>
+      <div class="status-group">
+        <div class="project-status status-live">En ligne</div>
+        <div class="project-status status-dev">En développement</div>
+      </div>
     </div>
     <div class="project-body">
       <p class="project-desc">Prototype d'assistant de communication pour TPE et associations : à partir du profil de la structure, l'IA génère des propositions de posts adaptées à Facebook, Instagram et LinkedIn (texte + idée de visuel), suggère des sujets, et permet de planifier les publications sur un calendrier mensuel.</p>
@@ -431,7 +438,10 @@ footer {
         <div class="project-name">Avant / Après — Refonte de site</div>
         <div class="project-type">Démo interactive · Transformation de sites vitrines vieillissants</div>
       </div>
-      <div class="project-status status-live">En ligne</div>
+      <div class="status-group">
+        <div class="project-status status-live">En ligne</div>
+        <div class="project-status status-dev">En développement</div>
+      </div>
     </div>
     <div class="project-body">
       <p class="project-desc">Galerie de cas représentatifs (artisan, association, profession libérale) illustrant la transformation d'un site vitrine daté et non responsive en site moderne, clair et orienté vers le contact — un argument visuel pour la prestation de refonte de site.</p>
